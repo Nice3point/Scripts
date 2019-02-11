@@ -1,0 +1,62 @@
+/*
+***********************************************************************************
+@Author: Roman Karpovich
+@Created on: 11-02-2018
+@Last modified: 11-02-2018
+@Function: Create nested folders
+@Current version: v1.0
+@Daily music for u: Gemstone Records - Rich Edwards feat. Emelie - Turn Back Time 
+***********************************************************************************
+*/
+
+   $user = "%USERNAME%";
+   if (confirm("$user, будет cоздано дерево проекта в папке <curpath>.<crlf><crlf>После подтверждения подожди завершения программы!")==1)
+   {
+    $lb = "<crlf>";
+
+    $items = readfile();
+
+    $numIndent = (regexmatches(gettoken($items, 1, $lb), "^\d+\s")) ? 1 : 0;
+
+    $paths = "";
+    $files = "";
+    $lastIndent = 0;
+    $count = 0;
+    $numPattern = "^\s*\d+\s";
+
+    foreach($item, $items, $lb) {
+        if (!$item) { continue; }
+
+        if ($numIndent) { $curIndent = trim(regexmatches($item, $numPattern), "<tab> ") - 1; }
+        else            { $curIndent = strlen(regexmatches($item, "^\s+")); }
+
+        if (!$curIndent) {
+            if ($numIndent) { $trimmeditem = regexreplace($item, $numPattern); }
+            else            { $trimmeditem = $item; }
+            $path = $trimmeditem;
+        } else {
+            if ($numIndent) { $trimmeditem = regexreplace($item, $numPattern); }
+            else            { $trimmeditem = trim($item, "<tab> ", "L"); }
+        }
+
+
+        if ($curIndent > $lastIndent) { $path = $path . "\" . $trimmeditem; }
+
+        elseif ($curIndent < $lastIndent) { $path = gettoken($path, (($lastIndent - $curIndent) * -1) - 2, "\", , 1) . "\" . $trimmeditem; }
+
+        elseif ($curIndent == $lastIndent && $curIndent != 0) { $path = gettoken($path, -2, "\", , 1) . "\" . $trimmeditem; }
+
+        $lastIndent = $curIndent;
+        $paths = $paths . $path . $lb;
+    }
+    $paths = formatlist($paths, "dents", $lb);
+
+    // Создание дерева
+    foreach($path, $paths, $lb) {
+	if(exists($path) == "0"){
+        new($path, "dir"); 
+        $count = $count + 1;
+        }
+    }
+    msg("Структура проекта создана из $count папок, можешь поставить лайк на аву и продолжай заниматься своими делами.")
+    }
