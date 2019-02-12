@@ -5,7 +5,7 @@
 @Last modified: 11-02-2018
 @Function: Create nested folders
 @Current version: v1.0
-@Daily music for u: Gemstone Records - Rich Edwards feat. Emelie - Turn Back Time 
+@Daily music for u: Gemstone Records - Rich Edwards feat. Emelie - Turn Back Time
 ***********************************************************************************
 */
 
@@ -14,7 +14,7 @@
    {
     $lb = "<crlf>";
 
-    $items = readfile();
+    $items = readfile("fold.txt");
 
     $numIndent = (regexmatches(gettoken($items, 1, $lb), "^\d+\s")) ? 1 : 0;
 
@@ -52,11 +52,17 @@
     $paths = formatlist($paths, "dents", $lb);
 
     // Создание дерева
-    foreach($path, $paths, $lb) {
-	if(exists($path) == "0"){
-        new($path, "dir"); 
-        $count = $count + 1;
-        }
+    foreach($path, $paths, $lb)
+    {
+		if(exists("<curpath>\$path") != 2)
+	   	{
+        	new($path, "dir");
+	        $count = $count + 1;
+	    }
+	    else
+	    {
+	     msg("<curpath>\$path is exist")
+	    }
     }
     msg("Структура проекта создана из $count папок, можешь поставить лайк на аву и продолжай заниматься своими делами.")
     }
