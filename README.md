@@ -1,5 +1,5 @@
 # Scripts
-Scripts for XYplorer
+Scripts for XYplorer, Excel
 # License
 
 Copyright 2019 Nice3point technology
