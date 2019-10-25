@@ -5,9 +5,9 @@ Public RG As String
 Public m3h As String
 
 Private Sub initDim()
-    RS = Sheets("Настройки").Cells(1, 2)
-    RG = Sheets("Настройки").Cells(2, 2)
-    m3h = Sheets("Настройки").Cells(3, 2)
+    RS = Sheets("РќР°СЃС‚СЂРѕР№РєРё").Cells(1, 2)
+    RG = Sheets("РќР°СЃС‚СЂРѕР№РєРё").Cells(2, 2)
+    m3h = Sheets("РќР°СЃС‚СЂРѕР№РєРё").Cells(3, 2)
 End Sub
 
 Function Concat(data As Range) As String
@@ -15,58 +15,58 @@ Function Concat(data As Range) As String
     Application.Calculation = xlAutomatic
 
     Dim fStr As String
-    Dim Group1 As New Collection 'Основные данные
-    Dim Group2 As New Collection 'Механические показатели
-    Dim Group3 As New Collection 'Гидравлические показатели
-    Dim Group4 As New Collection 'Термические показатели
-    Dim Group5 As New Collection 'Электрические показатели
+    Dim Group1 As New Collection 'РћСЃРЅРѕРІРЅС‹Рµ РґР°РЅРЅС‹Рµ
+    Dim Group2 As New Collection 'РњРµС…Р°РЅРёС‡РµСЃРєРёРµ РїРѕРєР°Р·Р°С‚РµР»Рё
+    Dim Group3 As New Collection 'Р“РёРґСЂР°РІР»РёС‡РµСЃРєРёРµ РїРѕРєР°Р·Р°С‚РµР»Рё
+    Dim Group4 As New Collection 'РўРµСЂРјРёС‡РµСЃРєРёРµ РїРѕРєР°Р·Р°С‚РµР»Рё
+    Dim Group5 As New Collection 'Р­Р»РµРєС‚СЂРёС‡РµСЃРєРёРµ РїРѕРєР°Р·Р°С‚РµР»Рё
 
-    'd - чистые данные
-    'с - данные с размерностью
+    'd - С‡РёСЃС‚С‹Рµ РґР°РЅРЅС‹Рµ
+    'СЃ - РґР°РЅРЅС‹Рµ СЃ СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊСЋ
 
-    Dim d1 As String 'Функциональный тип
-    Dim d2 As String 'Функциональный подтип
-    Dim d3 As String 'Описание
-    Dim d4 As String 'Комплект
-    Dim d5 As String 'Материал
-    Dim d6 As String 'Класс герметичности
+    Dim d1 As String 'Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Р№ С‚РёРї
+    Dim d2 As String 'Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Р№ РїРѕРґС‚РёРї
+    Dim d3 As String 'РћРїРёСЃР°РЅРёРµ
+    Dim d4 As String 'РљРѕРјРїР»РµРєС‚
+    Dim d5 As String 'РњР°С‚РµСЂРёР°Р»
+    Dim d6 As String 'РљР»Р°СЃСЃ РіРµСЂРјРµС‚РёС‡РЅРѕСЃС‚Рё
     Dim d7 As String 'PN
     Dim d8 As String 'DN
-    Dim d9 As String 'Мощность тепловая
-    Dim d10 As String 'КПД
-    Dim d11 As String 'Минимальный расход
-    Dim d12 As String 'Максимальный расход
+    Dim d9 As String 'РњРѕС‰РЅРѕСЃС‚СЊ С‚РµРїР»РѕРІР°СЏ
+    Dim d10 As String 'РљРџР”
+    Dim d11 As String 'РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°СЃС…РѕРґ
+    Dim d12 As String 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°СЃС…РѕРґ
     Dim d13 As String 'KVS
-    Dim d14 As String 'Напор
-    Dim d15 As String 'Мин температура
-    Dim d16 As String 'Макс температура
-    Dim d17 As String 'Мощность электрическая
-    Dim d18 As String 'Ток
-    Dim d19 As String 'Фазы
-    Dim d20 As String 'Напряжение
-    Dim d21 As String 'Частота сети
+    Dim d14 As String 'РќР°РїРѕСЂ
+    Dim d15 As String 'РњРёРЅ С‚РµРјРїРµСЂР°С‚СѓСЂР°
+    Dim d16 As String 'РњР°РєСЃ С‚РµРјРїРµСЂР°С‚СѓСЂР°
+    Dim d17 As String 'РњРѕС‰РЅРѕСЃС‚СЊ СЌР»РµРєС‚СЂРёС‡РµСЃРєР°СЏ
+    Dim d18 As String 'РўРѕРє
+    Dim d19 As String 'Р¤Р°Р·С‹
+    Dim d20 As String 'РќР°РїСЂСЏР¶РµРЅРёРµ
+    Dim d21 As String 'Р§Р°СЃС‚РѕС‚Р° СЃРµС‚Рё
 
-    Dim c1 As String 'Функциональный тип
-    Dim c2 As String 'Функциональный подтип
-    Dim c3 As String 'Описание
-    Dim c4 As String 'Комплект
-    Dim c5 As String 'Материал
-    Dim c6 As String 'Класс герметичности
+    Dim c1 As String 'Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Р№ С‚РёРї
+    Dim c2 As String 'Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Р№ РїРѕРґС‚РёРї
+    Dim c3 As String 'РћРїРёСЃР°РЅРёРµ
+    Dim c4 As String 'РљРѕРјРїР»РµРєС‚
+    Dim c5 As String 'РњР°С‚РµСЂРёР°Р»
+    Dim c6 As String 'РљР»Р°СЃСЃ РіРµСЂРјРµС‚РёС‡РЅРѕСЃС‚Рё
     Dim c7 As String 'PN
     Dim c8 As String 'DN
-    Dim c9 As String 'Мощность тепловая
-    Dim c10 As String 'КПД
-    Dim c11 As String 'Минимальный расход
-    Dim c12 As String 'Максимальный расход
+    Dim c9 As String 'РњРѕС‰РЅРѕСЃС‚СЊ С‚РµРїР»РѕРІР°СЏ
+    Dim c10 As String 'РљРџР”
+    Dim c11 As String 'РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°СЃС…РѕРґ
+    Dim c12 As String 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°СЃС…РѕРґ
     Dim c13 As String 'KVS
-    Dim c14 As String 'Напор
-    Dim c15 As String 'Мин температура
-    Dim c16 As String 'Макс температура
-    Dim c17 As String 'Мощность электрическая
-    Dim c18 As String 'Ток
-    Dim c19 As String 'Фазы
-    Dim c20 As String 'Напряжение
-    Dim c21 As String 'Частота сети
+    Dim c14 As String 'РќР°РїРѕСЂ
+    Dim c15 As String 'РњРёРЅ С‚РµРјРїРµСЂР°С‚СѓСЂР°
+    Dim c16 As String 'РњР°РєСЃ С‚РµРјРїРµСЂР°С‚СѓСЂР°
+    Dim c17 As String 'РњРѕС‰РЅРѕСЃС‚СЊ СЌР»РµРєС‚СЂРёС‡РµСЃРєР°СЏ
+    Dim c18 As String 'РўРѕРє
+    Dim c19 As String 'Р¤Р°Р·С‹
+    Dim c20 As String 'РќР°РїСЂСЏР¶РµРЅРёРµ
+    Dim c21 As String 'Р§Р°СЃС‚РѕС‚Р° СЃРµС‚Рё
 
     d1 = data(1)
     d2 = data(2)
@@ -93,24 +93,24 @@ Function Concat(data As Range) As String
     c1 = d1
     c2 = d2
     c3 = UCase(Left(d3, 1)) & LCase(Mid(d3, 2))
-    c4 = "В комплект поставки входит: " & d4
-    c5 = "Материал - " & d5
-    c6 = "класс герметичности " & d6
+    c4 = "Р’ РєРѕРјРїР»РµРєС‚ РїРѕСЃС‚Р°РІРєРё РІС…РѕРґРёС‚: " & d4
+    c5 = "РњР°С‚РµСЂРёР°Р» - " & d5
+    c6 = "РєР»Р°СЃСЃ РіРµСЂРјРµС‚РёС‡РЅРѕСЃС‚Рё " & d6
     c7 = "PN" & d7
     c8 = "DN" & d8
-    c9 = "Q = " & d9 & " кВт"
-    c10 = "КПД = " & d10 & " %"
+    c9 = "Q = " & d9 & " РєР’С‚"
+    c10 = "РљРџР” = " & d10 & " %"
     c11 = "Qmin = " & d11 & m3h
     c12 = "Qmax = " & d12 & m3h
     c13 = "KVS = " & d13 & m3h
-    c14 = "H = " & d14 & " м"
-    c15 = "Tmin = " & d15 & " °C"
-    c16 = "Tmax = " & d16 & " °C"
-    c17 = "N = " & d17 & " кВт"
-    c18 = "I = " & d18 & " А"
+    c14 = "H = " & d14 & " Рј"
+    c15 = "Tmin = " & d15 & " В°C"
+    c16 = "Tmax = " & d16 & " В°C"
+    c17 = "N = " & d17 & " РєР’С‚"
+    c18 = "I = " & d18 & " Рђ"
     If d19 <> "" Then c19 = d19 & "~"
-    c20 = d20 & " В"
-    c21 = "f = " & d21 & " Гц"
+    c20 = d20 & " Р’"
+    c21 = "f = " & d21 & " Р“С†"
 
     Call initDim
 
@@ -140,10 +140,10 @@ Function Concat(data As Range) As String
     Group5.Add Array(d21, c21)
 
     fStr = fStr & ConcatG(Group1, RG)
-    fStr = fStr & ConcatG(Group2, RG & "Механические показатели: ")
-    fStr = fStr & ConcatG(Group3, RG & "Гидравлические показатели: ")
-    fStr = fStr & ConcatG(Group4, RG & "Термические показатели: ")
-    fStr = fStr & ConcatG(Group5, RG & "Электрические показатели: ")
+    fStr = fStr & ConcatG(Group2, RG & "РњРµС…Р°РЅРёС‡РµСЃРєРёРµ РїРѕРєР°Р·Р°С‚РµР»Рё: ")
+    fStr = fStr & ConcatG(Group3, RG & "Р“РёРґСЂР°РІР»РёС‡РµСЃРєРёРµ РїРѕРєР°Р·Р°С‚РµР»Рё: ")
+    fStr = fStr & ConcatG(Group4, RG & "РўРµСЂРјРёС‡РµСЃРєРёРµ РїРѕРєР°Р·Р°С‚РµР»Рё: ")
+    fStr = fStr & ConcatG(Group5, RG & "Р­Р»РµРєС‚СЂРёС‡РµСЃРєРёРµ РїРѕРєР°Р·Р°С‚РµР»Рё: ")
 
     If d4 <> "" Then fStr = fStr & RG & c4
 
@@ -169,4 +169,3 @@ For Each el In col
 Next el
 ConcatG = str
 End Function
-
