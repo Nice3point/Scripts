@@ -13,7 +13,7 @@ Const WelcomePage = "Macros"
 Private Sub Workbook_Open()
 
 On Error Resume Next
-   If Dir("\\FILE-SVR\Проект\Цельс-инжиниринг\2 Рабочие папки специалистов\Карпович Роман\Лицензии\licenseExcel") = "" Then
+If Dir("\\FILE-SVR\File path") = "" Then
         Application.DisplayAlerts = False
         ActiveWorkbook.Save
         MsgBox "Отсутствует лиценция на использование файла", vbOKOnly + vbCritical, "Бог в помощь"
@@ -125,11 +125,3 @@ Private Sub ShowAllSheets()
 
     Worksheets(WelcomePage).Visible = xlSheetVeryHidden
 End Sub
-
-
-
-
-
-
-
-
