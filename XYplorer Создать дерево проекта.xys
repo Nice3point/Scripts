@@ -8,9 +8,6 @@
 @Daily music for u: Gemstone Records - Rich Edwards feat. Emelie - Turn Back Time
 ***********************************************************************************
 */
-
-   if (exists("\\FILE-SVR\Проект\Цельс-инжиниринг\2 Рабочие папки специалистов\Карпович Роман\Лицензии\licenseXYplorer") == 1)
-   {
    $user = "%USERNAME%";
    $filefolder = "<curpath>\folders.txt";
    if (exists($filefolder) == 1)
@@ -29,7 +26,7 @@
     $countdir = 0;
     $countfile =0;
     $numPattern = "^\s*\d+\s";
-    $patternfolder ="\\FILE-SVR\Проект\Цельс-инжиниринг\2 Рабочие папки специалистов\Карпович Роман\Шаблоны";
+    $patternfolder ="\\Server\Path";
 
     foreach($item, $items, $lb) {
         if (!$item) { continue; }
@@ -78,5 +75,4 @@
     }
     }
     else {msg("Отсутствует файл folders.txt с описанием дирректорий")}
-    }
-    else {msg("Отсутствует лицензионный ключ, обратитесь к разработчику скрипта")}
+}
