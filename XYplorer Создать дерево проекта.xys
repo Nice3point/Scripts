@@ -2,10 +2,10 @@
 ***********************************************************************************
 @Author: Roman Karpovich
 @Created on: 11-02-2018
-@Last modified: 24-03-2020
+@Last modified: 26-05-2020
 @Function: Create nested folders
 @Current version: v1.2
-@Daily music for u: Gemstone Records - Rich Edwards feat. Emelie - Turn Back Time
+@Daily music for u: Stisema, N-Chased - Stay The Night (ft. Member)
 ***********************************************************************************
 */
 
@@ -72,7 +72,7 @@
                      }
     }
     //backupto "<curpath>\", "$patternfolder\.gitignore", 1, , , , , , 0;
-    msg("Структура проекта создана из $countdir папок и $countfile файлов, можешь поставить лайк на аву и продолжай заниматься своими делами.")
+    msg("Структура проекта создана из $countdir папок и $countfile файлов")
     }
     }
-    else {msg("Отсутствует файл folders.txt с описанием дирректорий")}
+    else {msg("Отсутствует файл $filefolder с описанием директорий")}
