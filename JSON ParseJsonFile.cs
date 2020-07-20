@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace ConsoleApplication1
+namespace Program
 {
     public class Parse
     {
         private static readonly string data = DateTime.Now.ToString("yyyy MM dd ");
-        const string jsonDir = @"C:\Users\Roman\Desktop\Json\";
-        const string pdfDir = @"C:\Users\Roman\Desktop\PDF\";
-        const string csvDir = @"C:\Users\Roman\Desktop\";
+        const string jsonDir = @"Z:\12 Нормативная документация\.Sources\Json\";
+        const string pdfDir = @"Z:\12 Нормативная документация\.Sources\normy.by\tnpa\1\";
+        const string csvDir = @"C:\";
 
         private static void Main(string[] args)
         {
