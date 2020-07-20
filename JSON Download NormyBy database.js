@@ -1,4 +1,6 @@
-//wget -A pdf -m -p -E -k -K -np --no-check-certificate -P C:\Users\Roman.LIDER\Desktop\Normy https://normy.by/tnpa/1/
+//.bat file
+//cd C:\Program Files (x86)\GnuWin32\bin
+//FOR /L %%G IN (1,1,5) DO wget -A pdf -m -p -E -k -K -np --no-check-certificate -P "Z:\12 Нормативная документация\.Sources" https://normy.by/tnpa/1/%%G.pdf 
 
 function POSTreq() {
   for (i = 0; i < 88; i++) {
