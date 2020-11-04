@@ -2,15 +2,14 @@
 ***********************************************************************************
 @Author: Roman Karpovich
 @Created on: 11-02-2018
-@Last modified: 26-05-2020
+@Last modified: 04-11-2020
 @Function: Create nested folders
-@Current version: v1.2
-@Daily music for u: Stisema, N-Chased - Stay The Night (ft. Member)
+@Current version: v1.3
 ***********************************************************************************
 */
 
     $user = "%USERNAME%";
-    $filefolder = "Z:\Стандарты огранизации\Файловая структура\folders.txt";
+    $filefolder = "Z:\13 Стандарты организации\Файловая структура\folders.txt";
     if (exists($filefolder) == 1)
     {
     if (confirm("$user, будет cоздано дерево проекта в папке <curpath>.<crlf><crlf>После подтверждения подожди завершения программы!") == 1)
@@ -27,7 +26,7 @@
     $countdir = 0;
     $countfile =0;
     $numPattern = "^\s*\d+\s";
-    //$patternfolder ="Z:\Стандарты огранизации\Файловая структура";
+    $patternfolder ="Z:\3 Шаблоны\5 Государственные органы\Госстройэкспертиза";
 
     foreach($item, $items, $lb) {
         if (!$item) { continue; }
@@ -60,10 +59,15 @@
     foreach($path, $paths, $lb)
     {
           if (regexmatches($path, ":$"))  { 
-                     if(exists(replace("<curpath>\$path", ":")) != 1) {
+                     if(exists(replace("<curpath>\$path", ":")) !=1 && exists("$patternfolder\$filename") !=2) {
                               $filename=regexmatches($path, '([^.\\]+)\.(.+)+?(?=\:)');
                               $filepath=replace(replace("$path", "$filename"), ":");
-                              backupto "<curpath>\$filepath", "$patternfolder\$filename", 3, 1, , , , , 0;
+                              copyas "Бланк_*.?", "<curpath>\$filepath", "$patternfolder\$filename";
+                             
+                              if(exists("<curpath>\$filepath$filename") != 0) 
+                              {
+                                  renameitem("Бланк_*", "<curpath>\$filepath$filename", 1);
+                              }
                               $countfile = $countfile + 1; } }
           else{
                     if(exists("<curpath>\$path") != 2) {
@@ -71,7 +75,7 @@
                             $countdir = $countdir + 1;}
                      }
     }
-    //backupto "<curpath>\", "$patternfolder\.gitignore", 1, , , , , , 0;
+    //backupto "<curpath>\", "$patternfolder\.gitignore", 3, , , , , , 0;
     msg("Структура проекта создана из $countdir папок и $countfile файлов")
     }
     }
