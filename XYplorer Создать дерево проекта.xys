@@ -2,9 +2,10 @@
 ***********************************************************************************
 @Author: Roman Karpovich
 @Created on: 11-02-2018
-@Last modified: 04-11-2020
+@Last modified: 26-05-2020
 @Function: Create nested folders
-@Current version: v1.3
+@Current version: v1.2
+@Daily music for u: Stisema, N-Chased - Stay The Night (ft. Member)
 ***********************************************************************************
 */
 
@@ -62,13 +63,14 @@
                      if(exists(replace("<curpath>\$path", ":")) !=1 && exists("$patternfolder\$filename") !=2) {
                               $filename=regexmatches($path, '([^.\\]+)\.(.+)+?(?=\:)');
                               $filepath=replace(replace("$path", "$filename"), ":");
-                              copyas "Бланк_*.?", "<curpath>\$filepath", "$patternfolder\$filename";
+                              
                              
-                              if(exists("<curpath>\$filepath$filename") != 0) 
+                              if(exists("<curpath>\$filepathБланк_$filename") == 0) 
                               {
-                                  renameitem("Бланк_*", "<curpath>\$filepath$filename", 1);
+                                  copyas "Бланк_*.?", "<curpath>\$filepath", "$patternfolder\$filename";
+                                  $countfile = $countfile + 1;
                               }
-                              $countfile = $countfile + 1; } }
+                               } }
           else{
                     if(exists("<curpath>\$path") != 2) {
                             new($path, "dir");
